@@ -1,7 +1,7 @@
 Select *
 From ecommercebrasil..olist_avaliacoes_pedido
 
----ticket mÈdio por compra----
+---ticket m√©dio por compra----
 
 SELECT 
     AVG(payment_value) AS ticket_medio_por_compra
@@ -15,7 +15,7 @@ FROM (
         order_id
 ) AS order_payments;
 
----ticket mÈdio por categoria de produtos---
+---ticket m√©dio por categoria de produtos---
 
 SELECT 
     p.product_category_name,
@@ -41,7 +41,7 @@ GROUP BY
     p.product_category_name;
 
 
---- Onde est· localizado os vendedores por proporÁ„o em porcentagem ---
+--- Onde est√° localizado os vendedores por propor√ß√£o em porcentagem ---
 
 SELECT 
     seller_state,
@@ -54,7 +54,7 @@ GROUP BY
 ORDER BY 
     proporcao_percentual DESC;
 
---- Onde est· localizado os compradores por proporÁ„o ---
+--- Onde est√° localizado os compradores por propor√ß√£o ---
 
 SELECT 
     customer_state,
@@ -67,7 +67,7 @@ GROUP BY
 ORDER BY 
     proporcao_percentual DESC;
 
---- Qual a proporÁ„o de notas 5 , 4 , 3 ,2 , 1 em porcentagem ---
+--- Qual a propor√ß√£o de notas 5 , 4 , 3 ,2 , 1 em porcentagem ---
 
 SELECT 
     review_score,
@@ -80,7 +80,7 @@ GROUP BY
 ORDER BY 
     review_score;
 
---- Qual a proporÁ„o de n˙mero de itens comprados? ---
+--- Qual a propor√ß√£o de n√∫mero de itens comprados? ---
 
 SELECT 
     num_itens_comprados,
@@ -100,7 +100,7 @@ GROUP BY
 ORDER BY 
     num_itens_comprados;
 
---- Qual a proporÁ„o dos metodos de compras utilizados? ---
+--- Qual a propor√ß√£o dos metodos de compras utilizados? ---
 
 SELECT 
     payment_type,
@@ -113,7 +113,7 @@ GROUP BY
 ORDER BY 
     total_transacoes DESC;
 
---- proporÁ„o de em quantas parcelas geralmente È feita as compras ---
+--- propor√ß√£o de em quantas parcelas geralmente √© feita as compras ---
 
 SELECT 
     payment_installments AS numero_parcelas,
@@ -126,7 +126,7 @@ GROUP BY
 ORDER BY 
     numero_parcelas;
 
--- mÈdia de notas quando o pedido chega na data ou antes da data estipulada--
+-- m√©dia de notas quando o pedido chega na data ou antes da data estipulada--
 
 SELECT 
     AVG(ap.review_score) AS media_notas
@@ -137,7 +137,7 @@ JOIN
 WHERE 
     op.order_delivered_customer_date <= op.order_estimated_delivery_date;
 
--- mÈdia de notas quando o pedido chega depois da data estipulada --
+-- m√©dia de notas quando o pedido chega depois da data estipulada --
 
 SELECT 
     AVG(ap.review_score) AS media_notas_atrasadas
@@ -148,7 +148,7 @@ JOIN
 WHERE 
     op.order_delivered_customer_date > op.order_estimated_delivery_date;
 
--- categoria de item mais vendida na cidade de s„o paulo --
+-- categoria de item mais vendida na cidade de s√£o paulo --
 
 SELECT
     p.product_category_name AS categoria,
@@ -168,7 +168,7 @@ WHERE
 GROUP BY
     p.product_category_name;
 
---Quantos dias, em mÈdia, de tempo que leva pra chegar um item que sai de um vendedor da cidade de sao paulo--
+--Quantos dias, em m√©dia, de tempo que leva pra chegar um item para clientes na cidade de sao paulo--
 
 SELECT 
     AVG(DATEDIFF(day, o.order_delivered_carrier_date, o.order_delivered_customer_date)) AS tempo_medio_entrega
